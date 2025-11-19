@@ -1,3 +1,8 @@
+:root {
+  --color-primary: #34c94b;   /* QTify green */
+  --color-black: #121212;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

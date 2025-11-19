@@ -1,4 +1,78 @@
+.container {
+  position: relative;
+  width: 50%;
+  /* background-color: blue; */
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  /* background-color: red; */
+}
+
 .search {
+  padding: 8px 0px 0px 14px !important;
+  height: 48px;
+  border-radius: 8px 0px 0px 8px !important;
+  border: 1px solid var(--color-black);
+  background-color: white;
+  width: 100%;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+
+.iconBox {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-black);
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  background: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.dropdown {
+  background-color: var(--color-black) !important;
+  border-radius: 0 0 10px 10px !important;
+  border: 1px solid var(--color-primary) !important;
+}
+
+.listbox {
+  max-height: 500px !important;
+  overflow-y: auto !important;
+}
+
+.listElement {
+  padding: 10px 14px;
+  color: white;
+}
+
+.albumTitle {
+  font-weight: 600;
+  color: white;
+}
+
+.albumArtists {
+  margin-top: 4px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+
+
+
+/* -------------------- */
+
+
+/* .search {
   padding: 14px 20px;
   height: 30%;
   border-radius: 8px;
@@ -39,4 +113,4 @@
 
 .albumArtists {
   font-size: 12px;
-}
+} */

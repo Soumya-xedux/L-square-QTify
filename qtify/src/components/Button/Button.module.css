@@ -1,11 +1,29 @@
-.button{
+.button {
+  background-color: var(--color-black);
+  color: var(--color-primary);
+  font-family: "Poppins", sans-serif;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: 1px solid var(--color-black);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+/* ------------------- */
+
+/* .button{
     color: #34C94B;
     border-radius: 10px;
-    font: Poppins;
+    font: Poppins, sans-serif;
     background-color: black;
     border: 0px;
     height: 35px;
     width: 140px;
     cursor: pointer;
     font-weight: bold;
-}
+} */

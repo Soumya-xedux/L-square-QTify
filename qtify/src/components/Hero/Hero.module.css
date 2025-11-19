@@ -1,4 +1,32 @@
 .hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 120px;
+}
+
+.left {
+  max-width: 500px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.subTitle {
+  font-size: 24px;
+  margin-top: 16px;
+  opacity: 0.7;
+}
+
+.heroImage {
+  width: 320px;
+}
+
+/* ---------------- */
+
+/* .hero {
   background-color: black;
   height: 270px;
   display: flex;
@@ -7,4 +35,4 @@
   text-align: center;
   gap: 30px;
   color: white;
-}
+} */
