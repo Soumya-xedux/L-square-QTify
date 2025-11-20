@@ -1,0 +1,42 @@
+.container{
+    /* padding: 16px; */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #333;
+    width: 159px;
+    height: 232px;
+}
+.imgBox{
+    width: 159px;
+    height: 205px;
+    background-color: white;
+    border-radius: 12px;
+}
+.image{
+    width: 159px;
+    height: 170px;
+}
+
+.follows{
+    margin: 4px 0px 0px 4px;
+    font-size: 14px;
+    color: white;
+    background-color: black;
+    text-align: left;
+    border-radius: 8px;
+    padding: 2px 6px 2px 6px;
+    width: fit-content;
+    height: 23px;
+    box-sizing: border-box;
+}
+
+.albumTitle{
+    font-size: 16px;
+    margin-top: 4px;
+    text-align: left;
+    color: white;
+    background-color: transparent;
+}

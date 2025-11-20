@@ -1,0 +1,9 @@
+.container{
+    background-color: black;
+    display: grid;
+    gap: 15px;
+    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(159px, 1fr));
+    overflow: hidden;
+    height: 220px;
+}
