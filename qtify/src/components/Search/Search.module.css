@@ -11,6 +11,98 @@
 }
 
 .search {
+  /* NOTE: this class is applied to the TextField wrapper by MUI.
+     We keep it for parity but override MUI internals below to ensure proper visual border. */
+  height: 48px;
+  width: 100%;
+  box-sizing: border-box;
+  background: transparent;
+  border-radius: 8px 0 0 8px;
+}
+
+/* 🔥 CHANGED: apply visible border to MUI input root contained inside .search */
+.search .MuiInputBase-root {
+  border: 1px solid var(--color-black);
+  border-right: none; /* the icon box will provide the right-side border */
+  border-radius: 8px 0 0 8px;
+  padding-left: 0; /* we'll set padding on the inner input */
+  height: 48px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* 🔥 CHANGED: apply padding to the actual input element */
+.search .MuiInputBase-input {
+  padding: 8px 0 0 14px !important; /* your desired padding */
+  height: 48px;
+  box-sizing: border-box;
+}
+
+/* Hide the default MUI underline (for safety) */
+.search .MuiInput-underline:before, 
+.search .MuiInput-underline:after {
+  display: none;
+}
+
+.iconBox {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-black);
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Dropdown (paper) style */
+.dropdown {
+  background-color: var(--color-black) !important;
+  border-radius: 0 0 10px 10px !important;
+  border: 1px solid var(--color-primary) !important;
+}
+
+.listbox {
+  max-height: 500px !important;
+  overflow-y: auto !important;
+}
+
+.listElement {
+  padding: 10px 14px;
+  color: white;
+}
+
+.albumTitle {
+  font-weight: 600;
+  color: white;
+}
+
+.albumArtists {
+  margin-top: 4px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+
+
+/* old code part - 2 */
+
+/* .container {
+  position: relative;
+  width: 50%;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+}
+
+.search {
   padding: 8px 0px 0px 14px !important;
   height: 48px;
   border-radius: 8px 0px 0px 8px !important;
@@ -61,12 +153,12 @@
   margin-top: 4px;
   font-size: 14px;
   opacity: 0.7;
-}
+} */
 
 
 
 
-/* -------------------- */
+/* --------------------old code part-1 */
 
 
 /* .search {

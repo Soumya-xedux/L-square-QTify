@@ -1,0 +1,12 @@
+.carouselWrapper {
+  width: 100%;
+}
+
+.swiper {
+  padding: 10px 0;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--color-primary) !important;
+}

@@ -6,6 +6,13 @@ import TextField from "@mui/material/TextField";
 import { truncate } from "../../helpers/helpers";
 import { useNavigate } from "react-router-dom";
 
+/* 🔥 CHANGED:
+   - kept your DOM structure (wrapper + TextField + iconBox)
+   - ensured disableUnderline so default MUI underline doesn't show
+   - kept Autocomplete renderOption same
+   - no new class names in JSX; CSS targets MUI internal elements where needed
+*/
+
 export default function Search({ searchData, placeholder }) {
   const navigate = useNavigate();
 
@@ -44,16 +51,16 @@ export default function Search({ searchData, placeholder }) {
               placeholder={placeholder}
               className={styles.search}
               variant="standard"
-                InputProps={{ ...params.InputProps, disableUnderline: true }}
+              InputProps={{ ...params.InputProps, disableUnderline: true }}
             />
 
-            <div className={styles.iconBox}>
+            <div className={styles.iconBox} role="button" aria-label="search">
               <SearchIcon />
             </div>
           </div>
         )}
         classes={{
-          paper: styles.dropdown, // custom dropdown
+          paper: styles.dropdown,
           listbox: styles.listbox,
         }}
       />
@@ -61,7 +68,74 @@ export default function Search({ searchData, placeholder }) {
   );
 }
 
-// -------------------------------
+
+
+// ------------------old code part-2
+
+// import React from "react";
+// import styles from "./Search.module.css";
+// import { ReactComponent as SearchIcon } from "../../assets/search-icon.svg";
+// import Autocomplete from "@mui/material/Autocomplete";
+// import TextField from "@mui/material/TextField";
+// import { truncate } from "../../helpers/helpers";
+// import { useNavigate } from "react-router-dom";
+
+// export default function Search({ searchData, placeholder }) {
+//   const navigate = useNavigate();
+
+//   return (
+//     <div className={styles.container}>
+//       <Autocomplete
+//         freeSolo
+//         options={searchData || []}
+//         getOptionLabel={(opt) => opt.title || ""}
+//         onChange={(event, value) => {
+//           if (value) {
+//             navigate(`/album/${value.slug}`);
+//           }
+//         }}
+//         renderOption={(props, option) => {
+//           const artists = option.songs.reduce((acc, cur) => {
+//             acc.push(...cur.artists);
+//             return acc;
+//           }, []);
+
+//           return (
+//             <li {...props} className={styles.listElement}>
+//               <div>
+//                 <p className={styles.albumTitle}>{option.title}</p>
+//                 <p className={styles.albumArtists}>
+//                   {truncate(artists.join(", "), 40)}
+//                 </p>
+//               </div>
+//             </li>
+//           );
+//         }}
+//         renderInput={(params) => (
+//           <div className={styles.wrapper}>
+//             <TextField
+//               {...params}
+//               placeholder={placeholder}
+//               className={styles.search}
+//               variant="standard"
+//                 InputProps={{ ...params.InputProps, disableUnderline: true }}
+//             />
+
+//             <div className={styles.iconBox}>
+//               <SearchIcon />
+//             </div>
+//           </div>
+//         )}
+//         classes={{
+//           paper: styles.dropdown, // custom dropdown
+//           listbox: styles.listbox,
+//         }}
+//       />
+//     </div>
+//   );
+// }
+
+// -------------------------------old code part-1
 
 // import React from "react";
 // import styles from "./Search.module.css";

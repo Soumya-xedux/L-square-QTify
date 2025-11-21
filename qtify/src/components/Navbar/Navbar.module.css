@@ -1,4 +1,17 @@
 .navbar {
+  background-color: var(--color-primary); /* 🔥 CHANGED: use variable */
+  height: 74px;
+  width: 100%;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+
+
+/* .navbar {
   background-color: #34C94B;
   height: 74px;
   width: 100%;
@@ -7,4 +20,4 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-}
+} */

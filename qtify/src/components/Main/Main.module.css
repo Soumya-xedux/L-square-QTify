@@ -6,4 +6,26 @@
     grid-template-columns: repeat(auto-fit, minmax(159px, 1fr));
     overflow: hidden;
     height: 220px;
+    margin-top: 20px;
 }
+.mainWrapper {
+  background-color: black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+
+/* -------------- */
+/* .container{
+    background-color: black;
+    display: grid;
+    gap: 15px;
+    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(159px, 1fr));
+    overflow: hidden;
+    height: 220px;
+    margin-top: 20px;
+} */

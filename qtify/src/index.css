@@ -1,5 +1,24 @@
-:root {
-  --color-primary: #34c94b;   /* QTify green */
+/* 🔥 CHANGED: add QTify color variables and font import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root{
+  --color-primary: #34C94B; /* QTify green */
+  --color-black: #000000;
+}
+
+/* reset box-sizing */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #000; /* consistent with hero dark background, change if needed */
+  color: #fff;
+}
+
+
+/* :root {
+  --color-primary: #34c94b;   
   --color-black: #121212;
 }
 
@@ -10,9 +29,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */
