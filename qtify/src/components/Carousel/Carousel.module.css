@@ -1,12 +1,57 @@
 .carouselWrapper {
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+}
+
+/* Shared button style */
+.navBtn {
+  position: absolute;
+  top: 35%;
+  z-index: 20;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* LEFT ARROW (Gray faint circle) */
+.prevBtn {
+  left: -10px;
+  background: #3bea5a;;
+}
+
+/* RIGHT ARROW (Figma Green) */
+.nextBtn {
+  right: -10px;
+  background: #3bea5a; /* QTify green */
+}
+
+.arrow {
+  font-size: 18px;
+  color: white;
+}
+
+.swiper {
+  padding-bottom: 20px;
+}
+
+
+/* .carouselWrapper {
   width: 100%;
 }
 
 .swiper {
   padding: 10px 0;
+
 }
 
 .swiper-button-prev,
 .swiper-button-next {
   color: var(--color-primary) !important;
-}
+} */
+

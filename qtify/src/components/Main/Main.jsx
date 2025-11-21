@@ -20,7 +20,6 @@ import IconButton from "@mui/material/IconButton";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 
-
 /* Helper small components used inside Main.jsx only
    (This keeps Main.jsx self-contained for the full page)
 */
@@ -44,13 +43,21 @@ const MusicPlayer = ({ track = null }) => {
     <div className={styles.player}>
       <div className={styles.playerLeft}>
         <img
-          src={track ? track.image : require("../../../src/assets/demoCard_img.png")}
+          src={
+            track
+              ? track.image
+              : require("../../../src/assets/demoCard_img.png")
+          }
           alt="song"
           className={styles.playerThumb}
         />
         <div>
-          <div className={styles.playerTitle}>{track ? track.title : "Song name"}</div>
-          <div className={styles.playerAlbum}>{track ? track.album : "Album name"}</div>
+          <div className={styles.playerTitle}>
+            {track ? track.title : "Song name"}
+          </div>
+          <div className={styles.playerAlbum}>
+            {track ? track.album : "Album name"}
+          </div>
         </div>
       </div>
       <div className={styles.playerCenter}>
@@ -79,8 +86,8 @@ export default function Main() {
   const [genres, setGenres] = useState([]);
 
   // UI states
-  const [topCollapsed, setTopCollapsed] = useState(false); // false => grid view; true => carousel
-  const [newCollapsed, setNewCollapsed] = useState(false);
+  const [topCollapsed, setTopCollapsed] = useState(true); // false => grid view; true => carousel
+  const [newCollapsed, setNewCollapsed] = useState(true);
   const [faqOpenIndex, setFaqOpenIndex] = useState(null);
 
   // Songs tabs
@@ -105,12 +112,12 @@ export default function Main() {
     (async () => {
       try {
         const g = await fetchGenres();
-        if (mounted) {
-          // ensure "All" exists first
-          setGenres(["All", ...(Array.isArray(g) ? g.map((x) => x.name || x) : [])]);
-        }
-      } catch {
-        if (mounted) setGenres(["All", "Rock", "Pop", "Jazz", "Blues"]);
+
+        const list = Array.isArray(g?.data) ? g.data.map((x) => x.label) : [];
+        console.log("Fetched genres:", list);
+        setGenres(["All", ...list]);
+      } catch (err) {
+        setGenres(["All", "Rock", "Pop", "Jazz", "Blues"]);
       }
     })();
 
@@ -122,11 +129,15 @@ export default function Main() {
   // Derived song list by genre
   const filteredSongs = useMemo(() => {
     if (!songs || selectedGenre === "All") return songs;
+
     return songs.filter((s) => {
-      // each song object likely has genres array or genre field
-      if (Array.isArray(s.genres)) return s.genres.includes(selectedGenre);
-      if (s.genre) return s.genre === selectedGenre;
-      // fallback: check tag or categories
+      // song.genre looks like: { key: "rock", label: "Rock" }
+      if (s.genre && s.genre.key) {
+        return (
+          s.genre.key.toLowerCase() === selectedGenre.toLowerCase() ||
+          s.genre.label.toLowerCase() === selectedGenre.toLowerCase()
+        );
+      }
       return false;
     });
   }, [songs, selectedGenre]);
@@ -138,7 +149,10 @@ export default function Main() {
   // FAQ data
   const faqs = [
     { q: "Is QTify free to use?", a: "Yes! It is 100% free, and has 0% ads!" },
-    { q: "Can I download and listen to songs offline?", a: "Sorry, we don't provide downloads at the moment." },
+    {
+      q: "Can I download and listen to songs offline?",
+      a: "Sorry, we don't provide downloads at the moment.",
+    },
   ];
 
   return (
@@ -151,7 +165,7 @@ export default function Main() {
           title="Top Albums"
           rightNode={
             <button className={styles.collapseBtn} onClick={toggleTop}>
-              {topCollapsed ? "Collapse" : "Show all"}
+              {topCollapsed ? "Show all" : "Collapse"}
             </button>
           }
         />
@@ -189,7 +203,7 @@ export default function Main() {
           title="New Albums"
           rightNode={
             <button className={styles.collapseBtn} onClick={toggleNew}>
-              {newCollapsed ? "Collapse" : "Show all"}
+              {newCollapsed ? "Show all" : "Collapse"}
             </button>
           }
         />
@@ -232,13 +246,25 @@ export default function Main() {
               variant="scrollable"
               scrollButtons="auto"
               aria-label="song-genres"
+              sx={{
+                "& .MuiTab-root": {
+                  color: "#FFFFFF", // default tab text
+                  opacity: 0.7,
+                  textTransform: "none",
+                  fontWeight: 500,
+                },
+                "& .Mui-selected": {
+                  color: "#00C853 !important", // selected tab color (QTify green)
+                  opacity: 1,
+                },
+                "& .MuiTabs-indicator": {
+                  backgroundColor: "#00C853", // underline color
+                },
+              }}
             >
-              {/* ensure genres includes "All" */}
-              {genres.length === 0
-                ? ["All", "Rock", "Pop", "Jazz", "Blues"].map((g) => (
-                    <Tab key={g} value={g} label={g} />
-                  ))
-                : genres.map((g) => <Tab key={g} value={g} label={g} />)}
+              {genres.map((g) => (
+                <Tab key={g} value={g} label={g} />
+              ))}
             </Tabs>
           </Box>
         </div>
@@ -266,7 +292,9 @@ export default function Main() {
               q={f.q}
               a={f.a}
               open={faqOpenIndex === idx}
-              onToggle={() => setFaqOpenIndex(faqOpenIndex === idx ? null : idx)}
+              onToggle={() =>
+                setFaqOpenIndex(faqOpenIndex === idx ? null : idx)
+              }
             />
           ))}
         </div>
@@ -278,13 +306,7 @@ export default function Main() {
   );
 }
 
-
-
-
-
 // -----------------------
-
-
 
 // import Card from "../Card/Card";
 // import styles from "./Main.module.css";
