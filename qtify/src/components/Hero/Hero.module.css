@@ -1,6 +1,5 @@
 .hero {
   background-color: black;
-  height: 270px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,8 +9,9 @@
 }
 
 .left {
-  width: 556px;
-  height: 100px;
+  /* width: 556px; */
+  /* height: 100px; */
+  font-size: 1em;
 }
 
 
