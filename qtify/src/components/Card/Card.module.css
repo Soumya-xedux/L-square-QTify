@@ -14,7 +14,7 @@
 
 .imgBox {
   width: 159px;
-  height: 170px; /* 🔥 CHANGED: used 170px for image portion to preserve ratio */
+  height: 205px; /* 🔥 CHANGED: used 170px for image portion to preserve ratio */
   background-color: white;
   border-radius: 12px;
   position: relative;
@@ -23,7 +23,7 @@
 
 .image {
   width: 100%;
-  height: 100%;
+  height: 170px;
   object-fit: cover; /* 🔥 CHANGED: keep aspect ratio and crop if needed */
   display: block;
 }
@@ -33,7 +33,7 @@
   position: absolute;
   left: 8px;
   bottom: 8px;
-  margin: 0;
+  margin: -3px;
   font-size: 14px;
   color: white;
   background-color: black;
